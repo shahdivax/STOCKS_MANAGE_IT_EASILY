@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1035778021461",
+    "project_id": "stocks-c65a2",
+    "storage_bucket": "stocks-c65a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035778021461:android:ad8fe9b725a8be17b21cdc",
+        "android_client_info": {
+          "package_name": "com.divax.stocks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1035778021461-cl9q40s21l4qnmrk8d5gl85mbeavqigk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkdcaXTIrwM7SoO1SK3YTehbu13ubWtuY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1035778021461-cl9q40s21l4qnmrk8d5gl85mbeavqigk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
