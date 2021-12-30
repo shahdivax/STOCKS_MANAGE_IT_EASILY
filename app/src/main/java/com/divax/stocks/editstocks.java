@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -52,8 +55,17 @@ public class editstocks extends AppCompatActivity {
 
 
         BUY.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
+                if(PRICE.getText().toString().equals("") || QUANTITY.getText().toString().equals("")){
+                    AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
+                    view.startAnimation(buttonClick);
+                    Animation shake = AnimationUtils.loadAnimation(editstocks.this, R.anim.shake);
+                    view.startAnimation(shake);
+                    Toast.makeText(editstocks.this, "SOMETHING FOUND EMPTY", Toast.LENGTH_SHORT).show();
+
+                }else{
                 Double n = Double.parseDouble(net);
 
 
@@ -85,7 +97,7 @@ public class editstocks extends AppCompatActivity {
                 startActivity(intent);
                 NAME.setText("");
                 PRICE.setText("");
-                QUANTITY.setText("");
+                QUANTITY.setText("");}
             }
         });
 
@@ -104,6 +116,25 @@ public class editstocks extends AppCompatActivity {
         SELL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Double sq = Double.parseDouble(selectedq);
+                if(sq <= 0.0){
+                    AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
+                    view.startAnimation(buttonClick);
+                    Animation shake = AnimationUtils.loadAnimation(editstocks.this, R.anim.shake);
+                    view.startAnimation(shake);
+                    Toast.makeText(editstocks.this, "NOTHING TO SELL PLEASE BUY SOME FIRST", Toast.LENGTH_SHORT).show();
+
+                }else{
+                if(PRICE.getText().toString().equals("") || QUANTITY.getText().toString().equals("")){
+
+                    AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
+                    view.startAnimation(buttonClick);
+                    Animation shake = AnimationUtils.loadAnimation(editstocks.this, R.anim.shake);
+                    view.startAnimation(shake);
+                    Toast.makeText(editstocks.this, "SOMETHING FOUND EMPTY", Toast.LENGTH_SHORT).show();
+                }
+
+                else{
 
                 Double n = Double.parseDouble(net);
 
@@ -134,9 +165,9 @@ public class editstocks extends AppCompatActivity {
                 Toast.makeText(editstocks.this, NAME.getText()+" SOLD", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(editstocks.this,MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                startActivity(intent);}
 
-            }
+            }}
         });
     }
 }

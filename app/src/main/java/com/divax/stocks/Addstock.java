@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -49,12 +52,27 @@ public class Addstock extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(name.getText().toString().equals("") || price.getText().toString().equals("") || quantity.getText().toString().equals("")){
+
+                if(name.getText().toString().equals("") || price.getText().toString().equals("") || quantity.getText().toString().equals("") ){
+
+                    AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
+                    view.startAnimation(buttonClick);
+                    Animation shake = AnimationUtils.loadAnimation(Addstock.this, R.anim.shake);
+                    view.startAnimation(shake);
 
                     Toast.makeText(Addstock.this, "SOMETHING FOUND EMPTY", Toast.LENGTH_SHORT).show();
 
                 }else{
                     try {
+                        Double q = Double.parseDouble(quantity.getText().toString());
+                        if(q <= 0){
+                            AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
+                            view.startAnimation(buttonClick);
+                            Animation shake = AnimationUtils.loadAnimation(Addstock.this, R.anim.shake);
+                            view.startAnimation(shake);
+
+                            Toast.makeText(Addstock.this, "Quantity Can Not Be 0", Toast.LENGTH_SHORT).show();
+                        }else{
 
                         Double net = Double.parseDouble(price.getText().toString()) * Double.parseDouble(quantity.getText().toString());
                         String netvalue = String.valueOf(net);
@@ -67,7 +85,7 @@ public class Addstock extends AppCompatActivity {
                         price.setText("");
                         quantity.setText("");
 
-                    }catch (Exception e){
+                    }}catch (Exception e){
                         Toast.makeText(Addstock.this, "Something", Toast.LENGTH_SHORT).show();
                     }
                 }
