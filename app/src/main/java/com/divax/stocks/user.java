@@ -1,6 +1,5 @@
 package com.divax.stocks;
 
-
 public class user {
   String username, mail, password, userId;
 
